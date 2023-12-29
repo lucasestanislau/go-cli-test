@@ -46,6 +46,14 @@ jobs:
     - name: Build
       run: go build -v main.go
 
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v4.1.0
+      with:
+        # Name of the artifact to download. If unspecified, all artifacts for the run are downloaded.
+        name: programa
+        # Destination path. Supports basic tilde expansion. Defaults to $GITHUB_WORKSPACE
+        path: main
+
   docker:
     needs: build
     uses: ./.github/workflows/Docker.yml
